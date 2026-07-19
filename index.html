@@ -159,6 +159,30 @@ footer{background:#07101f;color:#fff;padding:46px 0 28px}.foot{display:flex;just
   .contact-actions .btn{flex:1 1 0;padding-left:15px;padding-right:15px;white-space:nowrap}
 }
 
+
+/* Modulo contatti */
+.contact-section{background:var(--o);padding:82px 0}
+.contact-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:46px;align-items:start}
+.contact-copy h2{color:var(--n);margin-bottom:16px}
+.contact-copy p{color:rgba(11,23,48,.78);font-size:1.08rem;font-weight:700}
+.contact-direct{margin-top:28px;display:flex;flex-direction:column;gap:12px}
+.contact-direct a{display:inline-flex;align-items:center;gap:10px;color:var(--n);font-weight:900;font-size:1.05rem}
+.contact-form{background:#fff;border-radius:24px;padding:32px;box-shadow:0 22px 55px rgba(11,23,48,.18)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.form-field{margin-bottom:17px}
+.form-field label{display:block;margin-bottom:7px;color:var(--n);font-weight:900;font-size:.93rem}
+.form-field input,.form-field select,.form-field textarea{width:100%;border:1px solid #cfd6df;border-radius:12px;background:#fff;color:var(--t);font:inherit;padding:13px 14px;outline:none;transition:border-color .2s ease,box-shadow .2s ease}
+.form-field input:focus,.form-field select:focus,.form-field textarea:focus{border-color:var(--o);box-shadow:0 0 0 4px rgba(242,140,40,.16)}
+.form-field textarea{min-height:145px;resize:vertical}
+.privacy-check{display:flex;gap:10px;align-items:flex-start;margin:4px 0 20px;color:var(--m);font-size:.9rem}
+.privacy-check input{margin-top:5px;flex:0 0 auto}
+.contact-form .submit-btn{width:100%;border:0;background:var(--n);color:#fff;cursor:pointer;font-size:1rem}
+.contact-form .submit-btn:hover{background:var(--n2);transform:translateY(-1px)}
+.form-note{margin:12px 0 0;font-size:.82rem;color:var(--m);text-align:center}
+.hp-field{position:absolute;left:-9999px;opacity:0;pointer-events:none}
+@media(max-width:900px){.contact-grid{grid-template-columns:1fr}}
+@media(max-width:620px){.form-row{grid-template-columns:1fr}.contact-form{padding:24px}.contact-section{padding:68px 0}}
+
 </style>
 </head>
 <body>
@@ -260,10 +284,75 @@ footer{background:#07101f;color:#fff;padding:46px 0 28px}.foot{display:flex;just
   </div>
 </section>
 
-<section class="cta" id="contatti">
-  <div class="wrap cta-in">
-    <div><h2>Partiamo da una criticità concreta.</h2><p>Un primo confronto permette di capire insieme se e come intervenire.</p></div>
-    <a class="btn" href="tel:+393934087315">Chiama il 393 4087315</a>
+<section class="contact-section" id="contatti">
+  <div class="wrap contact-grid">
+    <div class="contact-copy">
+      <span class="ey">Contatti</span>
+      <h2>Partiamo da una criticità concreta.</h2>
+      <p>Descrivi brevemente la tua esigenza. La richiesta arriverà direttamente a Studio FM e verrà gestita personalmente.</p>
+      <div class="contact-direct">
+        <a href="tel:+393934087315">Telefono: 393 4087315</a>
+        <a href="mailto:studiofm.contatto@gmail.com">Email: studiofm.contatto@gmail.com</a>
+      </div>
+    </div>
+
+    <form class="contact-form" action="https://formsubmit.co/studiofm.contatto@gmail.com" method="POST">
+      <input type="hidden" name="_subject" value="Nuova richiesta dal sito Studio FM">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_autoresponse" value="Grazie per aver contattato Studio FM. La tua richiesta è stata ricevuta e verrà esaminata il prima possibile.">
+
+      <div class="hp-field" aria-hidden="true">
+        <label for="website">Non compilare questo campo</label>
+        <input type="text" id="website" name="_honey" tabindex="-1" autocomplete="off">
+      </div>
+
+      <div class="form-row">
+        <div class="form-field">
+          <label for="nome">Nome e cognome *</label>
+          <input type="text" id="nome" name="Nome e cognome" autocomplete="name" required>
+        </div>
+        <div class="form-field">
+          <label for="azienda">Azienda</label>
+          <input type="text" id="azienda" name="Azienda" autocomplete="organization">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-field">
+          <label for="email">Email *</label>
+          <input type="email" id="email" name="Email" autocomplete="email" required>
+        </div>
+        <div class="form-field">
+          <label for="telefono">Telefono</label>
+          <input type="tel" id="telefono" name="Telefono" autocomplete="tel">
+        </div>
+      </div>
+
+      <div class="form-field">
+        <label for="servizio">Servizio di interesse</label>
+        <select id="servizio" name="Servizio di interesse">
+          <option value="">Seleziona un servizio</option>
+          <option>Check-up Operativo</option>
+          <option>Monitoraggio Ordini</option>
+          <option>Gestione Fornitori</option>
+          <option>Dashboard e Controllo</option>
+          <option>Altro supporto operativo</option>
+        </select>
+      </div>
+
+      <div class="form-field">
+        <label for="messaggio">Messaggio *</label>
+        <textarea id="messaggio" name="Messaggio" placeholder="Racconta brevemente la situazione e il supporto di cui hai bisogno..." required></textarea>
+      </div>
+
+      <label class="privacy-check">
+        <input type="checkbox" name="Consenso privacy" value="Accettato" required>
+        <span>Acconsento al trattamento dei dati inseriti esclusivamente per essere ricontattato in merito alla mia richiesta. *</span>
+      </label>
+
+      <button class="btn submit-btn" type="submit">Invia richiesta</button>
+      <p class="form-note">I campi contrassegnati con * sono obbligatori.</p>
+    </form>
   </div>
 </section>
 </main>
@@ -284,7 +373,7 @@ footer{background:#07101f;color:#fff;padding:46px 0 28px}.foot{display:flex;just
   <div class="wrap">
     <div class="foot">
       <div><div class="brand">STUDIO <b>FM</b></div><p>Supporto operativo per acquisti, fornitori, processi e organizzazione aziendale. Un unico referente per tutta la collaborazione.</p></div>
-      <div class="contact"><span>Contatto diretto</span><a href="tel:+393934087315">393 4087315</a></div>
+      <div class="contact"><span>Contatto diretto</span><a href="tel:+393934087315">393 4087315</a><a href="mailto:studiofm.contatto@gmail.com" style="font-size:1rem;margin-top:5px">studiofm.contatto@gmail.com</a></div>
     </div>
     <div class="copy">© <span id="year"></span> Studio FM. Tutti i diritti riservati.</div>
   </div>
