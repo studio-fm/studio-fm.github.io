@@ -34,7 +34,7 @@ header{position:sticky;top:0;z-index:20;background:rgba(11,23,48,.97);border-bot
 .audience{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.aud{background:#fff;border-left:4px solid var(--o);padding:24px;box-shadow:0 12px 35px rgba(11,23,48,.08)}
 .cta{background:var(--o);padding:68px 0}.cta-in{display:flex;justify-content:space-between;align-items:center;gap:30px}.cta h2{color:var(--n);margin-bottom:8px}.cta p{color:rgba(11,23,48,.75);font-weight:700}.cta .btn{background:var(--n);color:#fff;white-space:nowrap}
 footer{background:#07101f;color:#fff;padding:46px 0 28px}.foot{display:flex;justify-content:space-between;gap:30px;align-items:end}.foot p{color:rgba(255,255,255,.62);max-width:620px}.contact{text-align:right}.contact a{display:block;color:var(--o);font-weight:900;font-size:1.2rem}.copy{border-top:1px solid rgba(255,255,255,.08);margin-top:28px;padding-top:20px;color:rgba(255,255,255,.45);font-size:.86rem}
-.wa{position:fixed;right:18px;bottom:18px;background:#25d366;color:#fff;font-weight:900;padding:16px 18px;border-radius:999px;box-shadow:0 12px 28px rgba(0,0,0,.24)}
+
 @media(max-width:900px){.hero-grid,.check{grid-template-columns:1fr}.g3,.audience{grid-template-columns:1fr}.steps{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:720px){.sec{padding:70px 0}.links{display:none;position:absolute;top:72px;left:0;right:0;background:var(--n);padding:22px;flex-direction:column}.links.open{display:flex}.menu{display:block}.services,.steps{grid-template-columns:1fr}.cta-in,.foot{align-items:flex-start;flex-direction:column}.contact{text-align:left}.hero{padding-top:85px}.hero h1{font-size:3.15rem}}
 
@@ -290,7 +290,6 @@ footer{background:#07101f;color:#fff;padding:46px 0 28px}.foot{display:flex;just
   </div>
 </footer>
 
-<a class="wa" href="https://wa.me/393934087315?text=Buongiorno%2C%20vorrei%20ricevere%20informazioni%20sui%20servizi%20di%20Studio%20FM." target="_blank" rel="noopener">WhatsApp</a>
 
 <script>
 const m=document.getElementById('menu'),l=document.getElementById('links');
@@ -305,28 +304,38 @@ const whatsappFloat = document.getElementById('whatsappFloat');
 
 let bubbleAlreadyShown = false;
 let bubbleTimer;
+let bubbleDelayTimer;
 
-const whatsappObserver = new IntersectionObserver(entries => {
-  const heroVisible = entries[0].isIntersecting;
+// All'apertura il pulsante flottante deve essere nascosto.
+whatsappFloatWrap.classList.remove('visible');
+whatsappBubble.classList.remove('show');
 
-  if (heroVisible) {
+const whatsappObserver = new IntersectionObserver(([entry]) => {
+  if (entry.isIntersecting) {
+    // La prima schermata è visibile: mostra solo il pulsante accanto a Parliamone.
     whatsappFloatWrap.classList.remove('visible');
     whatsappBubble.classList.remove('show');
     clearTimeout(bubbleTimer);
-  } else {
-    whatsappFloatWrap.classList.add('visible');
-
-    if (!bubbleAlreadyShown) {
-      bubbleAlreadyShown = true;
-      setTimeout(() => {
-        whatsappBubble.classList.add('show');
-        bubbleTimer = setTimeout(() => {
-          whatsappBubble.classList.remove('show');
-        }, 5000);
-      }, 900);
-    }
+    clearTimeout(bubbleDelayTimer);
+    return;
   }
-}, { threshold: 0.15 });
+
+  // La prima schermata non è più visibile: mostra il pulsante flottante.
+  whatsappFloatWrap.classList.add('visible');
+
+  if (!bubbleAlreadyShown) {
+    bubbleAlreadyShown = true;
+    bubbleDelayTimer = setTimeout(() => {
+      whatsappBubble.classList.add('show');
+      bubbleTimer = setTimeout(() => {
+        whatsappBubble.classList.remove('show');
+      }, 5000);
+    }, 700);
+  }
+}, {
+  root: null,
+  threshold: 0.10
+});
 
 whatsappObserver.observe(heroSection);
 
