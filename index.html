@@ -1,11 +1,156 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <title>Studio FM</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Studio FM: supporto operativo per PMI su acquisti, fornitori, processi, expediting e controllo.">
+<title>Studio FM | Supporto operativo per PMI</title>
+<style>
+:root{--n:#0b1730;--n2:#142746;--o:#f28c28;--c:#f6f3ed;--t:#182235;--m:#667085;--w:#fff}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--t);line-height:1.6;background:var(--w)}
+a{text-decoration:none;color:inherit}.wrap{width:min(1120px,calc(100% - 40px));margin:auto}.sec{padding:88px 0}.alt{background:var(--c)}
+h1,h2,h3{line-height:1.1;margin-top:0}h2{font-size:clamp(2rem,5vw,3.1rem);margin-bottom:18px}p{color:var(--m)}
+.ey{display:inline-block;color:var(--o);font-weight:900;letter-spacing:.14em;text-transform:uppercase;font-size:.8rem;margin-bottom:12px}
+header{position:sticky;top:0;z-index:20;background:rgba(11,23,48,.97);border-bottom:1px solid rgba(255,255,255,.08)}
+.nav{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{color:#fff;font-weight:900;font-size:1.4rem}.brand b{color:var(--o)}
+.links{display:flex;gap:23px;color:rgba(255,255,255,.86);font-weight:700;font-size:.95rem}.links a:hover{color:var(--o)}.menu{display:none;background:none;border:0;color:white;font-size:1.5rem}
+.hero{padding:112px 0 105px;color:#fff;overflow:hidden;background:linear-gradient(135deg,var(--n),var(--n2));position:relative}
+.hero:after{content:"";position:absolute;width:420px;height:420px;border-radius:50%;right:-150px;top:-150px;background:rgba(242,140,40,.18)}
+.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.25fr .75fr;gap:60px;align-items:center}
+.hero h1{font-size:clamp(3rem,8vw,6rem);letter-spacing:-.045em;margin-bottom:24px}.hero h1 span{color:var(--o)}
+.hero p{color:rgba(255,255,255,.76);font-size:1.2rem;max-width:720px}.actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}
+.btn{display:inline-flex;min-height:52px;padding:0 24px;border-radius:999px;align-items:center;justify-content:center;font-weight:900;border:2px solid transparent}
+.primary{background:var(--o);color:var(--n)}.secondary{border-color:rgba(255,255,255,.45);color:#fff}
+.hero-card{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:24px;padding:30px}
+.hero-card strong{font-size:1.3rem}.hero-card ul{padding-left:20px;color:rgba(255,255,255,.82)}
+.strip{background:var(--o);color:var(--n);font-weight:900;text-align:center;padding:20px}
+.head{max-width:760px;margin-bottom:42px}.head p{font-size:1.08rem}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}.card,.service{background:#fff;border:1px solid #e1e5eb;border-radius:20px;padding:28px;box-shadow:0 18px 45px rgba(11,23,48,.09)}
+.num{width:42px;height:42px;border-radius:12px;background:rgba(242,140,40,.14);color:#c96a0d;display:flex;align-items:center;justify-content:center;font-weight:900;margin-bottom:18px}
+.services{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}.service{position:relative;overflow:hidden}.service:before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--o)}
+.dark{background:var(--n);color:#fff}.dark p{color:rgba(255,255,255,.7)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.step{border:1px solid rgba(255,255,255,.14);border-radius:18px;padding:23px;background:rgba(255,255,255,.05)}.step span{color:var(--o);font-weight:900;font-size:.82rem}
+.check{display:grid;grid-template-columns:.9fr 1.1fr;gap:50px;align-items:center}.box{background:linear-gradient(145deg,var(--n),var(--n2));color:#fff;border-radius:24px;padding:36px}.box p{color:rgba(255,255,255,.72)}.box li{margin:10px 0}
+.audience{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.aud{background:#fff;border-left:4px solid var(--o);padding:24px;box-shadow:0 12px 35px rgba(11,23,48,.08)}
+.cta{background:var(--o);padding:68px 0}.cta-in{display:flex;justify-content:space-between;align-items:center;gap:30px}.cta h2{color:var(--n);margin-bottom:8px}.cta p{color:rgba(11,23,48,.75);font-weight:700}.cta .btn{background:var(--n);color:#fff;white-space:nowrap}
+footer{background:#07101f;color:#fff;padding:46px 0 28px}.foot{display:flex;justify-content:space-between;gap:30px;align-items:end}.foot p{color:rgba(255,255,255,.62);max-width:620px}.contact{text-align:right}.contact a{display:block;color:var(--o);font-weight:900;font-size:1.2rem}.copy{border-top:1px solid rgba(255,255,255,.08);margin-top:28px;padding-top:20px;color:rgba(255,255,255,.45);font-size:.86rem}
+.wa{position:fixed;right:18px;bottom:18px;background:#25d366;color:#fff;font-weight:900;padding:16px 18px;border-radius:999px;box-shadow:0 12px 28px rgba(0,0,0,.24)}
+@media(max-width:900px){.hero-grid,.check{grid-template-columns:1fr}.g3,.audience{grid-template-columns:1fr}.steps{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:720px){.sec{padding:70px 0}.links{display:none;position:absolute;top:72px;left:0;right:0;background:var(--n);padding:22px;flex-direction:column}.links.open{display:flex}.menu{display:block}.services,.steps{grid-template-columns:1fr}.cta-in,.foot{align-items:flex-start;flex-direction:column}.contact{text-align:left}.hero{padding-top:85px}.hero h1{font-size:3.15rem}}
+</style>
 </head>
 <body>
-  <h1>Studio FM</h1>
-  <p>Meno urgenze. Più controllo. Più tempo per il tuo lavoro.</p>
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#home">STUDIO <b>FM</b></a>
+    <nav class="links" id="links">
+      <a href="#studio">Studio FM</a><a href="#servizi">Servizi</a><a href="#metodo">Metodo</a><a href="#checkup">Check-up</a><a href="#contatti">Contatti</a>
+    </nav>
+    <button class="menu" id="menu" aria-label="Apri menu">☰</button>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="ey">Supporto operativo per PMI</span>
+      <h1>Meno urgenze.<br><span>Più controllo.</span><br>Più tempo per il tuo lavoro.</h1>
+      <p>Studio FM affianca PMI e aziende artigiane nella gestione di acquisti, fornitori e processi operativi, con un approccio concreto e un unico referente per tutta la collaborazione.</p>
+      <div class="actions">
+        <a class="btn primary" href="#checkup">Scopri il Check-up Operativo</a>
+        <a class="btn secondary" href="tel:+393934087315">Parliamone</a>
+      </div>
+    </div>
+    <aside class="hero-card">
+      <strong>Un supporto diretto e operativo</strong>
+      <ul><li>Rapporto diretto, senza intermediari</li><li>Analisi dei problemi reali</li><li>Soluzioni pratiche e applicabili</li><li>Presidio delle attività fino al risultato</li></ul>
+    </aside>
+  </div>
+</section>
+
+<div class="strip">Acquisti · Fornitori · Processi · Expediting · Controllo operativo</div>
+
+<section class="sec" id="studio">
+  <div class="wrap">
+    <div class="head"><span class="ey">Studio FM</span><h2>Un unico referente per trasformare il disordine operativo in controllo.</h2><p>Studio FM offre alle piccole e medie imprese un supporto concreto quando attività, scadenze e fornitori diventano difficili da governare.</p></div>
+    <div class="g3">
+      <article class="card"><div class="num">01</div><h3>Più visibilità</h3><p>Situazioni, priorità e criticità diventano leggibili e gestibili.</p></article>
+      <article class="card"><div class="num">02</div><h3>Più metodo</h3><p>Attività organizzate con strumenti semplici, responsabilità e scadenze chiare.</p></article>
+      <article class="card"><div class="num">03</div><h3>Più continuità</h3><p>Ogni progetto viene seguito direttamente, dall'analisi all'applicazione.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="sec alt" id="servizi">
+  <div class="wrap">
+    <div class="head"><span class="ey">Servizi</span><h2>Interventi costruiti sui problemi operativi dell'azienda.</h2><p>Il supporto viene definito sulle priorità reali, sulle risorse disponibili e sui risultati da ottenere.</p></div>
+    <div class="services">
+      <article class="service"><h3>Acquisti e fornitori</h3><p>Controllo ordini, conferme, date, solleciti, criticità e coordinamento.</p></article>
+      <article class="service"><h3>Expediting operativo</h3><p>Presidio delle consegne per ridurre ritardi, sorprese e urgenze.</p></article>
+      <article class="service"><h3>Processi e organizzazione</h3><p>Mappatura dei flussi, responsabilità chiare e attività più semplici.</p></article>
+      <article class="service"><h3>Dashboard e KPI</h3><p>Strumenti chiari per monitorare scadenze, ordini e performance.</p></article>
+      <article class="service"><h3>Analisi costi e dati</h3><p>Lettura strutturata dei dati per individuare inefficienze e rischi.</p></article>
+      <article class="service"><h3>Supporto temporaneo</h3><p>Affiancamento nei momenti di sovraccarico, transizione o carenza di risorse.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="sec dark" id="metodo">
+  <div class="wrap">
+    <div class="head"><span class="ey">Metodo FM</span><h2>Prima capire. Poi ordinare. Infine presidiare.</h2><p>Un percorso semplice, pensato per produrre risultati concreti senza appesantire l'organizzazione.</p></div>
+    <div class="steps">
+      <article class="step"><span>FASE 1</span><h3>Ascolto</h3><p>Obiettivi, criticità, persone e vincoli.</p></article>
+      <article class="step"><span>FASE 2</span><h3>Analisi</h3><p>Processi, dati e punti di perdita di controllo.</p></article>
+      <article class="step"><span>FASE 3</span><h3>Piano d'azione</h3><p>Priorità, strumenti, scadenze e attività.</p></article>
+      <article class="step"><span>FASE 4</span><h3>Presidio</h3><p>Affiancamento diretto fino alla stabilizzazione.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="checkup">
+  <div class="wrap check">
+    <div><span class="ey">Check-up Operativo</span><h2>Il punto di partenza per capire dove intervenire davvero.</h2><p>Il Check-up Operativo permette di leggere in modo strutturato l'organizzazione aziendale, individuare le criticità più rilevanti e definire un piano di miglioramento concreto.</p></div>
+    <div class="box"><p>Il percorso può comprendere:</p><ul><li>Conoscenza dell'azienda e delle priorità</li><li>Mappatura dei processi operativi</li><li>Analisi delle criticità e dei rischi</li><li>Valutazione delle priorità</li><li>Piano di miglioramento</li><li>Report finale chiaro e utilizzabile</li></ul></div>
+  </div>
+</section>
+
+<section class="sec alt">
+  <div class="wrap">
+    <div class="head"><span class="ey">A chi si rivolge</span><h2>Per aziende che hanno bisogno di controllo, non di teoria.</h2></div>
+    <div class="audience">
+      <article class="aud"><h3>PMI</h3><p>Che vogliono migliorare l'organizzazione senza strutture complesse.</p></article>
+      <article class="aud"><h3>Aziende artigiane</h3><p>Che stanno crescendo e hanno bisogno di processi più ordinati.</p></article>
+      <article class="aud"><h3>Imprese in difficoltà operativa</h3><p>Che vivono ritardi, urgenze e carichi di lavoro non governati.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="contatti">
+  <div class="wrap cta-in">
+    <div><h2>Partiamo da una criticità concreta.</h2><p>Un primo confronto permette di capire insieme se e come intervenire.</p></div>
+    <a class="btn" href="tel:+393934087315">Chiama il 393 4087315</a>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div><div class="brand">STUDIO <b>FM</b></div><p>Supporto operativo per acquisti, fornitori, processi e organizzazione aziendale. Un unico referente per tutta la collaborazione.</p></div>
+      <div class="contact"><span>Contatto diretto</span><a href="tel:+393934087315">393 4087315</a></div>
+    </div>
+    <div class="copy">© <span id="year"></span> Studio FM. Tutti i diritti riservati.</div>
+  </div>
+</footer>
+
+<a class="wa" href="https://wa.me/393934087315?text=Buongiorno%2C%20vorrei%20ricevere%20informazioni%20sui%20servizi%20di%20Studio%20FM." target="_blank" rel="noopener">WhatsApp</a>
+
+<script>
+const m=document.getElementById('menu'),l=document.getElementById('links');
+m.onclick=()=>l.classList.toggle('open');
+l.querySelectorAll('a').forEach(a=>a.onclick=()=>l.classList.remove('open'));
+document.getElementById('year').textContent=new Date().getFullYear();
+</script>
 </body>
 </html>
